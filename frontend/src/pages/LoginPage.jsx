@@ -9,6 +9,7 @@ import { toast } from 'react-toastify'
 
 const LoginPage = () => {
 
+
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
@@ -16,6 +17,7 @@ const LoginPage = () => {
   const dispatch = useDispatch('');
 
   const [login, {isLoading}] = useLoginMutation();
+
   const {userInfo} = useSelector((state) => state.auth)
 
   useEffect(()=>{
@@ -32,7 +34,7 @@ const LoginPage = () => {
       navigate('/')
     }
      catch(err) {
-      toast.error("Inavlid email or password")
+      toast.error("Invalid email or password")
     }
   }
 
