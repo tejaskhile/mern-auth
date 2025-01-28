@@ -5,6 +5,9 @@ import { setCredentials } from "../slices/authSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import {useUpdateUserMutation} from '../slices/usersApiSlice'
+import Loader from '../components/Loader'
+
+
 
 const ProfilePage = () => {
   const [name, setName] = useState("");
@@ -17,7 +20,7 @@ const ProfilePage = () => {
 
   const { userInfo } = useSelector((state) => state.auth);
 
-  const [updateProfile] = useUpdateUserMutation();
+  const [updateProfile, {isLoading}] = useUpdateUserMutation();
 
   useEffect(() => {
     if (userInfo) {
@@ -79,6 +82,9 @@ const ProfilePage = () => {
             onChange={(e) => setConfirmPassword(e.target.value)}
             
           />
+
+          {isLoading && <Loader/>}
+
           <button>Update</button>
         </form>
       </div>

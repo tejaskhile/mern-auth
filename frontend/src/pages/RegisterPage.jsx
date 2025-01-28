@@ -5,6 +5,7 @@ import { useRegisterMutation } from '../slices/usersApiSlice'
 import { setCredentials } from '../slices/authSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import { toast } from 'react-toastify'
+import Loader from '../components/Loader'
 
 const RegisterPage = () => {
 
@@ -51,6 +52,9 @@ const RegisterPage = () => {
             <input type="email" placeholder='Email' value={email} onChange={(e)=> setEmail(e.target.value)} required/>
             <input type="password" placeholder='Password' value={password} onChange={(e)=> setPassword(e.target.value)} required/>
             <input type="password" placeholder='Confirm password' value={confirmPassword} onChange={(e)=> setConfirmPassword(e.target.value)} required/>
+          
+          {isLoading && <Loader/>}
+
           <button>SignUp</button>
           <p>Already have an account?<Link to='/login'>Login</Link></p> 
         </form>

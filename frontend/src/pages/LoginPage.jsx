@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useLoginMutation } from '../slices/usersApiSlice.js'
 import { setCredentials } from '../slices/authSlice.js'
 import { toast } from 'react-toastify'
+import Loader from '../components/Loader'
 
 
 const LoginPage = () => {
@@ -46,7 +47,10 @@ const LoginPage = () => {
           <h2>Sign In</h2>
             <input type="email" placeholder='Email' value={email} onChange={(e)=> setEmail(e.target.value)} required/>
             <input type="password" placeholder='Password' value={password} onChange={(e)=> setPassword(e.target.value)} required/>
-          <button>SignIn</button>
+ 
+          {isLoading && <Loader/>}
+
+          <button>Sign In</button>
           <p>Don't have an account?<Link to='/register'>Register</Link></p> 
         </form>
       </div>
